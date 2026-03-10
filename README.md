@@ -19,6 +19,12 @@ Windows one click guide for power users. <br> Covering all aspects, this one cli
 ## Updates
 This guide is continuously updated with improvements and bug fixes. <br> Make sure to always download the latest version from GitHub.
 
+# IWR
+- Paste this code into an elevated Administrator PowerShell window.
+```
+iwr https://github.com/FR33THYFR33THY/WinSux-Windows-Optimization-Guide/raw/refs/heads/main/WinSux.ps1 -useb | iex
+```
+
 ## Guide
 [Video](<https://www.youtube.com/fr33thy>)
 
