@@ -126,11 +126,6 @@
     	return $OpenFileDialog.FileName
     	}
 
-        Write-Host "youtube.com/FR3" -ForegroundColor White -NoNewline; Write-Host "3THY`n" -ForegroundColor Cyan
-
-        Write-Host "7Z`n"
-        ## explorer "https://www.7-zip.org"
-
 # download 7zip
 Get-FileFromWeb -URL "https://www.7-zip.org/a/7z2301-x64.exe" -File "$env:SystemRoot\Temp\7 Zip.exe"
 
@@ -145,38 +140,6 @@ cmd /c "reg add `"HKEY_CURRENT_USER\Software\7-Zip\Options`" /v `"CascadedMenu`"
 Move-Item -Path "$env:ProgramData\Microsoft\Windows\Start Menu\Programs\7-Zip\7-Zip File Manager.lnk" -Destination "$env:ProgramData\Microsoft\Windows\Start Menu\Programs" -Force -ErrorAction SilentlyContinue | Out-Null
 Remove-Item "$env:ProgramData\Microsoft\Windows\Start Menu\Programs\7-Zip" -Recurse -Force -ErrorAction SilentlyContinue | Out-Null
 
-        Write-Host "CHROME`n"
-        ## explorer "https://www.google.com/intl/en_us/chrome"
-
-# download google chrome
-Get-FileFromWeb -URL "https://dl.google.com/dl/chrome/install/googlechromestandaloneenterprise64.msi" -File "$env:SystemRoot\Temp\Chrome.msi"
-
-# install google chrome
-Start-Process -Wait "$env:SystemRoot\Temp\Chrome.msi" -ArgumentList "/quiet"
-
-# install ublock origin lite
-cmd /c "reg add `"HKLM\SOFTWARE\Policies\Google\Chrome\ExtensionInstallForcelist`" /v `"1`" /t REG_SZ /d `"ddkjiahejlhfcafbddmgiahcphecmpfh;https://clients2.google.com/service/update2/crx`" /f >nul 2>&1"
-
-# add chrome policies
-cmd /c "reg add `"HKLM\SOFTWARE\Policies\Google\Chrome`" /v `"HardwareAccelerationModeEnabled`" /t REG_DWORD /d `"0`" /f >nul 2>&1"
-cmd /c "reg add `"HKLM\SOFTWARE\Policies\Google\Chrome`" /v `"BackgroundModeEnabled`" /t REG_DWORD /d `"0`" /f >nul 2>&1"
-cmd /c "reg add `"HKLM\SOFTWARE\Policies\Google\Chrome`" /v `"HighEfficiencyModeEnabled`" /t REG_DWORD /d `"1`" /f >nul 2>&1"
-
-# remove logon chrome
-cmd /c "reg delete `"HKLM\Software\Microsoft\Active Setup\Installed Components\{8A69D345-D564-463c-AFF1-A69D9E530F96}`" /f >nul 2>&1"
-
-# remove chrome services
-$services = Get-Service | Where-Object { $_.Name -match 'Google' }
-foreach ($service in $services) {
-cmd /c "sc stop `"$($service.Name)`" >nul 2>&1"
-cmd /c "sc delete `"$($service.Name)`" >nul 2>&1"
-}
-
-# remove chrome scheduled tasks
-Get-ScheduledTask | Where-Object {$_.Taskname -match 'GoogleUpdateTaskMachineCore'} | Unregister-ScheduledTask -Confirm:$false
-Get-ScheduledTask | Where-Object {$_.Taskname -match 'GoogleUpdateTaskMachineUA'} | Unregister-ScheduledTask -Confirm:$false
-Get-ScheduledTask | Where-Object {$_.Taskname -match 'GoogleUpdaterTaskSystem'} | Unregister-ScheduledTask -Confirm:$false
-
         # FUNCTION SHOW-MENU
         function show-menu {
         Clear-Host
@@ -184,13 +147,12 @@ Get-ScheduledTask | Where-Object {$_.Taskname -match 'GoogleUpdaterTaskSystem'} 
         Write-Host "SELECT YOUR SYSTEM'S GPU`n" -ForegroundColor Yellow
         Write-Host " 1.  NVIDIA" -ForegroundColor Green
         Write-Host " 2.  AMD" -ForegroundColor Red
-        Write-Host " 3.  INTEL" -ForegroundColor Blue
-        Write-Host " 4.  SKIP`n"
+        Write-Host " 3.  INTEL`n" -ForegroundColor Blue
         }
         :MainLoop while ($true) {
         show-menu
         $choice = Read-Host " "
-        if ($choice -match '^[1-4]$') {
+        if ($choice -match '^[1-3]$') {
         switch ($choice) {
         1 {
 
@@ -202,9 +164,9 @@ Get-ScheduledTask | Where-Object {$_.Taskname -match 'GoogleUpdaterTaskSystem'} 
 
 # download driver
 Start-Sleep -Seconds 5
-Start-Process "C:\Program Files\Google\Chrome\Application\chrome.exe" "https://www.nvidia.com/en-us/drivers"
-Wait-Process -Name chrome
-
+Start-Process "https://www.nvidia.com/en-us/drivers"
+Pause
+        Write-Host ""
         Write-Host "SELECT DOWNLOADED DRIVER`n" -ForegroundColor Yellow
 
 # select driver
@@ -553,9 +515,10 @@ Start-Process -wait "$env:SystemRoot\Temp\Inspector\nvidiaProfileInspector.exe" 
 
 # download driver
 Start-Sleep -Seconds 5
-Start-Process "C:\Program Files\Google\Chrome\Application\chrome.exe" "https://www.amd.com/en/support/download/drivers.html"
-Wait-Process -Name chrome
+Start-Process "https://www.amd.com/en/support/download/drivers.html"
+Pause
 
+        Write-Host ""
         Write-Host "SELECT DOWNLOADED DRIVER`n" -ForegroundColor Yellow
 
 # select driver
@@ -779,9 +742,10 @@ cmd /c "reg add `"HKCU\Software\AMD\CN\VirtualSuperResolution`" /v `"AlreadyNoti
 
 # download driver
 Start-Sleep -Seconds 5
-Start-Process "C:\Program Files\Google\Chrome\Application\chrome.exe" "https://www.intel.com/content/www/us/en/search.html#sortCriteria=%40lastmodifieddt%20descending&f-operatingsystem_en=Windows%2011%20Family*&f-downloadtype=Drivers&cf-tabfilter=Downloads&cf-downloadsppth=Graphics"
-Wait-Process -Name chrome
+Start-Process "https://www.intel.com/content/www/us/en/search.html#sortCriteria=%40lastmodifieddt%20descending&f-operatingsystem_en=Windows%2011%20Family*&f-downloadtype=Drivers&cf-tabfilter=Downloads&cf-downloadsppth=Graphics"
+Pause
 
+        Write-Host ""
         Write-Host "SELECT DOWNLOADED DRIVER`n" -ForegroundColor Yellow
 
 # select driver
@@ -902,16 +866,9 @@ cmd /c "reg add `"$regPath`" /v `"Global_LowLatency`" /t REG_DWORD /d `"0`" /f >
         break MainLoop
 
           }
-        4 {
-
-        Clear-Host
-
-        break MainLoop
-
-          }
           }
           } else {
-          Write-Host "Invalid input. Please select a valid option (1-4).`n" -ForegroundColor Yellow
+          Write-Host "Invalid input. Please select a valid option (1-3).`n" -ForegroundColor Yellow
           Pause
           show-menu
           }
