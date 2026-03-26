@@ -11,27 +11,11 @@
 iwr https://github.com/FR33THYFR33THY/WinSux/raw/refs/heads/main/WinSux.ps1 -useb | iex
 ```
 
+# Graphics
+- For DDU & Graphic scripts see
+[Ultimate](<https://github.com/FR33THYFR33THY/Ultimate>)
+
 ## Guide
 [Video](<https://youtu.be/JJvW9e4X7k0>)
 
 [![Video](https://img.youtube.com/vi/JJvW9e4X7k0/maxresdefault.jpg)]([https://youtu.be/JJvW9e4X7k0](https://youtu.be/JJvW9e4X7k0))
-
-## Graphics
-- For DDU & Graphic scripts see
-[Ultimate](<https://>)
-
-# Patch Notes
-- 3/13/2026 Fixed compatibility issues with Windows LTSC/IoT 2021/2024
-- 3/14/2026 Removed disable ulps (causes performance issues with HAGS on 7000/9000 series AMD cards)
-- 3/14/2026 Fixed create recycle bin shortcut icon
-- 3/14/2026 Added updated function run as trusted installer
-- 3/14/2026 Added processor performance core parking unhide/min/max cores 100%
-- 3/14/2026 Fixed compatibility issues with Windows Server 2022/2025
-- 3/15/2026 Fixed broken instagram scrolling issue with set appearance options
-- 3/16/2026 Added disable acpi power savings/wake on all connected devices
-- 3/16/2026 Added uninstall voice clarity driver
-- 3/18/2026 Better remove logon chrome
-- 3/18/2026 Added allow password sign in
-- 3/21/2026 Added remove 3rd party scheduled tasks
-- 3/24/2026 Fixed black screen issue with safe boot
-- 3/24/2026 Added write-cache buffer flushing off for all scsi/nvme connected devices
