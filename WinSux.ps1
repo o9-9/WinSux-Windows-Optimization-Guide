@@ -49,7 +49,7 @@
         ## explorer "https://www.7-zip.org"
 
 # download 7zip
-Get-FileFromWeb -URL "https://www.7-zip.org/a/7z2301-x64.exe" -File "$env:SystemRoot\Temp\7 Zip.exe"
+Get-FileFromWeb -URL "https://github.com/FR33THYFR33THY/files/raw/refs/heads/main/7%20Zip.exe" -File "$env:SystemRoot\Temp\7 Zip.exe"
 
 # install 7zip
 Start-Process -Wait "$env:SystemRoot\Temp\7 Zip.exe" -ArgumentList "/S"
@@ -66,41 +66,33 @@ Remove-Item "$env:ProgramData\Microsoft\Windows\Start Menu\Programs\7-Zip" -Recu
 		## explorer "https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist?view=msvc-170"
 
 # download c++
-Get-FileFromWeb -URL "https://download.microsoft.com/download/8/B/4/8B42259F-5D70-43F4-AC2E-4B208FD8D66A/vcredist_x86.EXE" -File "$env:SystemRoot\Temp\vcredist2005_x86.exe"
-Get-FileFromWeb -URL "https://download.microsoft.com/download/8/B/4/8B42259F-5D70-43F4-AC2E-4B208FD8D66A/vcredist_x64.EXE" -File "$env:SystemRoot\Temp\vcredist2005_x64.exe"
-Get-FileFromWeb -URL "https://download.microsoft.com/download/5/D/8/5D8C65CB-C849-4025-8E95-C3966CAFD8AE/vcredist_x86.exe" -File "$env:SystemRoot\Temp\vcredist2008_x86.exe"
-Get-FileFromWeb -URL "https://download.microsoft.com/download/5/D/8/5D8C65CB-C849-4025-8E95-C3966CAFD8AE/vcredist_x64.exe" -File "$env:SystemRoot\Temp\vcredist2008_x64.exe"
-Get-FileFromWeb -URL "https://download.microsoft.com/download/1/6/5/165255E7-1014-4D0A-B094-B6A430A6BFFC/vcredist_x86.exe" -File "$env:SystemRoot\Temp\vcredist2010_x86.exe" 
-Get-FileFromWeb -URL "https://download.microsoft.com/download/1/6/5/165255E7-1014-4D0A-B094-B6A430A6BFFC/vcredist_x64.exe" -File "$env:SystemRoot\Temp\vcredist2010_x64.exe"
-Get-FileFromWeb -URL "https://download.microsoft.com/download/1/6/B/16B06F60-3B20-4FF2-B699-5E9B7962F9AE/VSU_4/vcredist_x86.exe" -File "$env:SystemRoot\Temp\vcredist2012_x86.exe"
-Get-FileFromWeb -URL "https://download.microsoft.com/download/1/6/B/16B06F60-3B20-4FF2-B699-5E9B7962F9AE/VSU_4/vcredist_x64.exe" -File "$env:SystemRoot\Temp\vcredist2012_x64.exe"
-Get-FileFromWeb -URL "https://download.microsoft.com/download/2/e/6/2e61cfa4-993b-4dd4-91da-3737cd5cd6e3/vcredist_x86.exe" -File "$env:SystemRoot\Temp\vcredist2013_x86.exe"
-Get-FileFromWeb -URL "https://download.microsoft.com/download/2/e/6/2e61cfa4-993b-4dd4-91da-3737cd5cd6e3/vcredist_x64.exe" -File "$env:SystemRoot\Temp\vcredist2013_x64.exe"
-Get-FileFromWeb -URL "https://aka.ms/vs/17/release/vc_redist.x86.exe" -File "$env:SystemRoot\Temp\vcredist2015_2017_2019_2022_x86.exe"
-Get-FileFromWeb -URL "https://aka.ms/vs/17/release/vc_redist.x64.exe" -File "$env:SystemRoot\Temp\vcredist2015_2017_2019_2022_x64.exe"
+Get-FileFromWeb -URL "https://github.com/FR33THYFR33THY/files/raw/refs/heads/main/C++.zip" -File "$env:SystemRoot\Temp\C++.zip"
+
+# extract c++ with 7zip
+& "$env:SystemDrive\Program Files\7-Zip\7z.exe" x "$env:SystemRoot\Temp\C++.zip" -o"$env:SystemRoot\Temp\C++" -y | Out-Null
 
 # install c++
-Start-Process -Wait "$env:SystemRoot\Temp\vcredist2005_x86.exe" -ArgumentList "/Q /C:`"msiexec /i vcredist.msi /qn /norestart`"" -WindowStyle Hidden
-Start-Process -Wait "$env:SystemRoot\Temp\vcredist2005_x64.exe" -ArgumentList "/Q /C:`"msiexec /i vcredist.msi /qn /norestart`"" -WindowStyle Hidden
-Start-Process -Wait "$env:SystemRoot\Temp\vcredist2008_x86.exe" -ArgumentList "/q" -WindowStyle Hidden
-Start-Process -Wait "$env:SystemRoot\Temp\vcredist2008_x64.exe" -ArgumentList "/q" -WindowStyle Hidden
-Start-Process -Wait "$env:SystemRoot\Temp\vcredist2010_x86.exe" -ArgumentList "/quiet /norestart" -WindowStyle Hidden
-Start-Process -Wait "$env:SystemRoot\Temp\vcredist2010_x64.exe" -ArgumentList "/quiet /norestart" -WindowStyle Hidden
-Start-Process -Wait "$env:SystemRoot\Temp\vcredist2012_x86.exe" -ArgumentList "/quiet /norestart" -WindowStyle Hidden
-Start-Process -Wait "$env:SystemRoot\Temp\vcredist2012_x64.exe" -ArgumentList "/quiet /norestart" -WindowStyle Hidden
-Start-Process -Wait "$env:SystemRoot\Temp\vcredist2013_x86.exe" -ArgumentList "/quiet /norestart" -WindowStyle Hidden
-Start-Process -Wait "$env:SystemRoot\Temp\vcredist2013_x64.exe" -ArgumentList "/quiet /norestart" -WindowStyle Hidden
-Start-Process -Wait "$env:SystemRoot\Temp\vcredist2015_2017_2019_2022_x86.exe" -ArgumentList "/quiet /norestart" -WindowStyle Hidden
-Start-Process -Wait "$env:SystemRoot\Temp\vcredist2015_2017_2019_2022_x64.exe" -ArgumentList "/quiet /norestart" -WindowStyle Hidden 
+Start-Process -Wait "$env:SystemRoot\Temp\C++\vcredist2005_x86.exe" -ArgumentList "/Q /C:`"msiexec /i vcredist.msi /qn /norestart`"" -WindowStyle Hidden
+Start-Process -Wait "$env:SystemRoot\Temp\C++\vcredist2005_x64.exe" -ArgumentList "/Q /C:`"msiexec /i vcredist.msi /qn /norestart`"" -WindowStyle Hidden
+Start-Process -Wait "$env:SystemRoot\Temp\C++\vcredist2008_x86.exe" -ArgumentList "/q" -WindowStyle Hidden
+Start-Process -Wait "$env:SystemRoot\Temp\C++\vcredist2008_x64.exe" -ArgumentList "/q" -WindowStyle Hidden
+Start-Process -Wait "$env:SystemRoot\Temp\C++\vcredist2010_x86.exe" -ArgumentList "/quiet /norestart" -WindowStyle Hidden
+Start-Process -Wait "$env:SystemRoot\Temp\C++\vcredist2010_x64.exe" -ArgumentList "/quiet /norestart" -WindowStyle Hidden
+Start-Process -Wait "$env:SystemRoot\Temp\C++\vcredist2012_x86.exe" -ArgumentList "/quiet /norestart" -WindowStyle Hidden
+Start-Process -Wait "$env:SystemRoot\Temp\C++\vcredist2012_x64.exe" -ArgumentList "/quiet /norestart" -WindowStyle Hidden
+Start-Process -Wait "$env:SystemRoot\Temp\C++\vcredist2013_x86.exe" -ArgumentList "/quiet /norestart" -WindowStyle Hidden
+Start-Process -Wait "$env:SystemRoot\Temp\C++\vcredist2013_x64.exe" -ArgumentList "/quiet /norestart" -WindowStyle Hidden
+Start-Process -Wait "$env:SystemRoot\Temp\C++\vcredist2015_2017_2019_2022_x86.exe" -ArgumentList "/quiet /norestart" -WindowStyle Hidden
+Start-Process -Wait "$env:SystemRoot\Temp\C++\vcredist2015_2017_2019_2022_x64.exe" -ArgumentList "/quiet /norestart" -WindowStyle Hidden 
 
         Write-Host "DDU`n"
         ## explorer "https://www.wagnardsoft.com/display-driver-uninstaller-ddu"
 
 # download ddu
-Get-FileFromWeb -URL "https://www.wagnardsoft.com/DDU/download/DDU%20v18.1.4.2_setup.exe" -File "$env:SystemRoot\Temp\DDU.exe"
+Get-FileFromWeb -URL "https://github.com/FR33THYFR33THY/files/raw/refs/heads/main/DDU.exe" -File "$env:SystemRoot\Temp\DDU.exe"
 
 # extract ddu with 7zip
-& "C:\Program Files\7-Zip\7z.exe" x "$env:SystemRoot\Temp\DDU.exe" -o"$env:SystemRoot\Temp\DDU" -y | Out-Null
+& "$env:SystemDrive\Program Files\7-Zip\7z.exe" x "$env:SystemRoot\Temp\DDU.exe" -o"$env:SystemRoot\Temp\DDU" -y | Out-Null
 
 # set config for ddu
 $DduConfig = @'
@@ -153,10 +145,10 @@ cmd /c "reg add `"HKLM\Software\Microsoft\Windows\CurrentVersion\DriverSearching
         ## explorer "https://www.google.com/intl/en_us/chrome"
 
 # download google chrome
-Get-FileFromWeb -URL "https://dl.google.com/dl/chrome/install/googlechromestandaloneenterprise64.msi" -File "$env:SystemRoot\Temp\Chrome.msi"
+Get-FileFromWeb -URL "https://github.com/FR33THYFR33THY/files/raw/refs/heads/main/Chrome.exe" -File "$env:SystemRoot\Temp\Chrome.exe"
 
 # install google chrome
-Start-Process -Wait "$env:SystemRoot\Temp\Chrome.msi" -ArgumentList "/quiet"
+Start-Process -Wait "$env:SystemRoot\Temp\Chrome.exe" -ArgumentList "--silent --install" -WindowStyle Hidden
 
 # install ublock origin lite
 cmd /c "reg add `"HKLM\SOFTWARE\Policies\Google\Chrome\ExtensionInstallForcelist`" /v `"1`" /t REG_SZ /d `"ddkjiahejlhfcafbddmgiahcphecmpfh;https://clients2.google.com/service/update2/crx`" /f >nul 2>&1"
@@ -189,10 +181,10 @@ Get-ScheduledTask | Where-Object { $_.TaskName -like '*Google*' } | Unregister-S
         ## explorer "https://www.microsoft.com/en-au/download/details.aspx?id=35"
 
 # download direct x
-Get-FileFromWeb -URL "https://download.microsoft.com/download/8/4/A/84A35BF1-DAFE-4AE8-82AF-AD2AE20B6B14/directx_Jun2010_redist.exe" -File "$env:SystemRoot\Temp\DirectX.exe"
+Get-FileFromWeb -URL "https://github.com/FR33THYFR33THY/files/raw/refs/heads/main/Direct%20X.exe" -File "$env:SystemRoot\Temp\DirectX.exe"
 
 # extract directx with 7zip
-& "C:\Program Files\7-Zip\7z.exe" x "$env:SystemRoot\Temp\DirectX.exe" -o"$env:SystemRoot\Temp\DirectX" -y | Out-Null
+& "$env:SystemDrive\Program Files\7-Zip\7z.exe" x "$env:SystemRoot\Temp\DirectX.exe" -o"$env:SystemRoot\Temp\DirectX" -y | Out-Null
 
 # install direct x
 Start-Process -Wait "$env:SystemRoot\Temp\DirectX\DXSETUP.exe" -ArgumentList "/silent" -WindowStyle Hidden
@@ -2926,7 +2918,7 @@ $InstallFile = Show-ModernFilePicker -Mode File
         Write-Host "DEBLOATING DRIVER`n"
 
 # extract driver with 7zip
-& "C:\Program Files\7-Zip\7z.exe" x "$InstallFile" -o"$env:SystemRoot\Temp\NvidiaDriver" -y | Out-Null
+& "$env:SystemDrive\Program Files\7-Zip\7z.exe" x "$InstallFile" -o"$env:SystemRoot\Temp\NvidiaDriver" -y | Out-Null
 
 # debloat nvidia driver
 Remove-Item "$env:SystemRoot\Temp\NvidiaDriver\Display.Nview" -Recurse -Force -ErrorAction SilentlyContinue | Out-Null
@@ -3023,10 +3015,7 @@ cmd /c "reg add `"HKLM\SYSTEM\ControlSet001\Services\nvlddmkm\Parameters\FTS`" /
 cmd /c "reg add `"HKLM\SYSTEM\CurrentControlSet\Services\nvlddmkm\Parameters\FTS`" /v `"EnableGR535`" /t REG_DWORD /d `"0`" /f >nul 2>&1"
 
 # download inspector
-Get-FileFromWeb -URL "https://github.com/Orbmu2k/nvidiaProfileInspector/releases/download/2.4.0.31/nvidiaProfileInspector.zip" -File "$env:SystemRoot\Temp\Inspector.zip"
-
-# extract inspector with 7zip
-& "C:\Program Files\7-Zip\7z.exe" x "$env:SystemRoot\Temp\Inspector.zip" -o"$env:SystemRoot\Temp\Inspector" -y | Out-Null
+Get-FileFromWeb -URL "https://github.com/FR33THYFR33THY/files/raw/refs/heads/main/Inspector.exe" -File "$env:SystemRoot\Temp\Inspector.exe"
 
 # set config for inspector
 $nipfile = @'
@@ -3229,7 +3218,7 @@ $nipfile = @'
 Set-Content -Path "$env:SystemRoot\Temp\Inspector.nip" -Value $nipfile -Force
 
 # import nip
-Start-Process -wait "$env:SystemRoot\Temp\Inspector\nvidiaProfileInspector.exe" -ArgumentList "-silentImport -silent $env:SystemRoot\Temp\Inspector.nip"
+Start-Process -wait "$env:SystemRoot\Temp\Inspector.exe" -ArgumentList "-silentImport -silent $env:SystemRoot\Temp\Inspector.nip"
 
         break MainLoop
 
@@ -3256,7 +3245,7 @@ $InstallFile = Show-ModernFilePicker -Mode File
         Write-Host "DEBLOATING DRIVER`n"
 
 # extract driver with 7zip
-& "C:\Program Files\7-Zip\7z.exe" x "$InstallFile" -o"$env:SystemRoot\Temp\AmdDriver" -y | Out-Null
+& "$env:SystemDrive\Program Files\7-Zip\7z.exe" x "$InstallFile" -o"$env:SystemRoot\Temp\AmdDriver" -y | Out-Null
 
 # debloat amd driver
 $path = "$env:SystemRoot\Temp\AmdDriver\Packages\Drivers\Display\WT6A_INF"
@@ -3459,7 +3448,7 @@ $InstallFile = Show-ModernFilePicker -Mode File
         Write-Host "DEBLOATING DRIVER`n"
 
 # extract driver with 7zip
-& "C:\Program Files\7-Zip\7z.exe" x "$InstallFile" -o"$env:SystemDrive\IntelDriver" -y | Out-Null
+& "$env:SystemDrive\Program Files\7-Zip\7z.exe" x "$InstallFile" -o"$env:SystemDrive\IntelDriver" -y | Out-Null
 
         Write-Host "INSTALLING DRIVER`n"
 
