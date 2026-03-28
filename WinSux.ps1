@@ -2955,13 +2955,11 @@ Remove-Item "$env:SystemRoot\Temp\NvidiaDriver\NvApp\NvConfigGenerator.dll" -For
 # install nvidia driver
 Start-Process "$env:SystemRoot\Temp\NvidiaDriver\setup.exe" -ArgumentList "-s -noreboot -noeula -clean" -Wait -NoNewWindow
 
-# install nvidia control panel
-try {
-Start-Process "winget" -ArgumentList "install `"9NF8H0H7WMLT`" --silent --accept-package-agreements --accept-source-agreements --disable-interactivity --no-upgrade" -Wait -WindowStyle Hidden
-} catch { }
+# download nvidia control panel
+Get-FileFromWeb -URL "https://github.com/FR33THYFR33THY/files/raw/refs/heads/main/NVIDIAControlPanel.Appx" -File "$env:SystemRoot\Temp\NVIDIAControlPanel.Appx"
 
-# uninstall winget
-Get-AppxPackage -allusers *Microsoft.Winget.Source* | Remove-AppxPackage
+# install nvidia control panel
+Add-AppxPackage -Path "$env:SystemRoot\Temp\NVIDIAControlPanel.Appx"
 
 # delete download
 Remove-Item "$InstallFile" -Force -ErrorAction SilentlyContinue | Out-Null
