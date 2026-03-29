@@ -8,7 +8,7 @@
 # IWR
 - Paste this code into an elevated Administrator PowerShell/Terminal window
 ```
-iwr https://github.com/FR33THYFR33THY/WinSux-Windows-Optimization-Guide/raw/refs/heads/main/Files/WinSux.ps1 -useb | iex
+iwr https://github.com/o9-9/WinSux-Windows-Optimization-Guide/raw/refs/heads/main/Files/WinSux.ps1 -useb | iex
 ```
 
 ## Guide
