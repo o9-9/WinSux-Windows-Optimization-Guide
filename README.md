@@ -8,18 +8,13 @@
 # IWR
 - Paste this code into an elevated Administrator PowerShell/Terminal window
 ```
-iwr https://github.com/o9-9/WinSux-Windows-Optimization-Guide/raw/refs/heads/main/Files/WinSux.ps1 -useb | iex
+iwr https://github.com/FR33THYFR33THY/WinSux/raw/refs/heads/main/WinSux.ps1 -useb | iex
 ```
 
-## Guide
+# Graphics
+- For DDU & Graphic scripts see<br>
+[Ultimate](<https://github.com/FR33THYFR33THY/Ultimate>)
+
+# Guide
 [Video](<https://youtu.be/JJvW9e4X7k0>)
-
-[![Video](https://img.youtube.com/vi/JJvW9e4X7k0/maxresdefault.jpg)]([https://youtu.be/JJvW9e4X7k0](https://youtu.be/JJvW9e4X7k0))
-
-# Patch Notes
-- 3/13/2026 Fixed compatibility issues with Windows LTSC/IoT 2021/2024
-- 3/14/2026 Removed disable ulps (causes performance issues with HAGS on 7000/9000 series AMD cards)
-- 3/14/2026 Fixed create recycle bin shortcut icon
-- 3/14/2026 Added updated function run as trusted installer
-- 3/14/2026 Added processor performance core parking unhide/min/max cores 100%
-- 3/14/2026 Fixed compatibility issues with Windows Server 2022/2025
+[![Video](https://img.youtube.com/vi/JJvW9e4X7k0/maxresdefault.jpg)](https://youtu.be/JJvW9e4X7k0)
